@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: culinary_compass_development
+  username: postgres
+  password: vic
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: culinary_compass_test
+  username: postgres
+  password: vic
+  host: localhost
+  port: 5432
+  
+production:
+  <<: *default
+  database: culinary_compass_production
+  username: culinary_compass
+  password: <%= ENV["CULINARY_COMPASS_DATABASE_PASSWORD"] %>
