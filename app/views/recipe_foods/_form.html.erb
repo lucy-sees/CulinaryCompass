@@ -1,8 +1,9 @@
-<%= form_with(model: recipe_food) do |form| %>
+<%= form_with(model: recipe_food, html: { class: 'form' }) do |form| %>
   <% if recipe_food.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(recipe_food.errors.count, "error") %> prohibited this recipe_food from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-danger" data-turbo-cache="false">
+      <h4>
+        <%= pluralize(recipe_food.errors.count, "error") %> prohibited this recipe_food from being saved:
+      </h4>
       <ul>
         <% recipe_food.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,22 +12,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :quantity, style: "display: block" %>
-    <%= form.number_field :quantity %>
+  <div class="form-group">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :food_id, style: "display: block" %>
-    <%= form.text_field :food_id %>
+  <div class="form-group">
+    <%= form.label :food_id %>
+    <%= form.text_field :food_id, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :recipe_id, style: "display: block" %>
-    <%= form.text_field :recipe_id %>
+  <div class="form-group">
+    <%= form.label :recipe_id %>
+    <%= form.text_field :recipe_id, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

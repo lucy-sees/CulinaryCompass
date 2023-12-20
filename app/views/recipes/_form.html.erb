@@ -1,8 +1,9 @@
-<%= form_with(model: recipe) do |form| %>
+<%= form_with(model: recipe, html: { class: 'form' }) do |form| %>
   <% if recipe.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-danger" data-turbo-cache="false">
+      <h4>
+        <%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:
+      </h4>
       <ul>
         <% recipe.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,37 +12,37 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :preparation_time, style: "display: block" %>
-    <%= form.number_field :preparation_time %>
+  <div class="form-group">
+    <%= form.label :preparation_time %>
+    <%= form.number_field :preparation_time, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :cooking_time, style: "display: block" %>
-    <%= form.number_field :cooking_time %>
+  <div class="form-group">
+    <%= form.label :cooking_time %>
+    <%= form.number_field :cooking_time, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :public, style: "display: block" %>
-    <%= form.check_box :public %>
+  <div class="form-group">
+    <%= form.label :public %>
+    <%= form.check_box :public, class: 'form-check-input' %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+  <div class="form-group">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
