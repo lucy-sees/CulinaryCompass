@@ -1,12 +1,23 @@
-  <h1 class="my-4">Foods</h1>
+<h1 class="my-4">Foods</h1>
 
-  <div id="foods">
-    <% @foods.each do |food| %>
-      <%= render food %>
-      <p>
-        <%= link_to "Show this food", food, class: 'btn btn-info mb-2' %>
-      </p>
-    <% end %>
-  </div>
+<div id="foods">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Measurement Unit</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <%= render 'food', food: food %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-  <%= link_to "New food", new_food_path, class: 'btn btn-primary' %>
+<%= link_to "New Food", new_food_path, class: 'btn btn-primary' %>

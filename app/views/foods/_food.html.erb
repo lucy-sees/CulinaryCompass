@@ -1,25 +1,14 @@
-<div id="<%= dom_id food %>" class="card mb-3">
-  <div class="card-body">
-    <h5 class="card-title"><%= food.name %></h5>
-
-    <p class="card-text">
-      <strong>Measurement unit:</strong>
-      <%= food.measurement_unit %>
-    </p>
-
-    <p class="card-text">
-      <strong>Price:</strong>
-      <%= food.price %>
-    </p>
-
-    <p class="card-text">
-      <strong>Quantity:</strong>
-      <%= food.quantity %>
-    </p>
-
-    <p class="card-text">
-      <strong>User:</strong>
-      <%= food.user_id %>
-    </p>
-  </div>
-</div>
+<tr>
+  <td><%= food.name %></td>
+  <td><%= food.measurement_unit %></td>
+  <td><%= food.price %></td>
+  <td><%= food.quantity %></td>
+  <td><%= food.user.name %></td>
+  <td>
+    <div class="d-flex gap-1">
+      <%= link_to 'Show', food, class: 'btn btn-primary btn-sm' %>
+      <%= link_to 'Edit', edit_food_path(food), class: 'btn btn-primary btn-sm' %>
+      <%= button_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', form: { class: 'd-inline' } %>
+    </div>
+  </td>
+</tr>
