@@ -1,27 +1,25 @@
-<div id="<%= dom_id food %>">
-  <p>
-    <strong>Name:</strong>
-    <%= food.name %>
-  </p>
+<div id="<%= dom_id food %>" class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title"><%= food.name %></h5>
 
-  <p>
-    <strong>Measurement unit:</strong>
-    <%= food.measurement_unit %>
-  </p>
+    <p class="card-text">
+      <strong>Measurement unit:</strong>
+      <%= food.measurement_unit %>
+    </p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= food.price %>
-  </p>
+    <p class="card-text">
+      <strong>Price:</strong>
+      <%= food.price %>
+    </p>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= food.quantity %>
-  </p>
+    <p class="card-text">
+      <strong>Quantity:</strong>
+      <%= food.quantity %>
+    </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= food.user_id %>
-  </p>
-
+    <p class="card-text">
+      <strong>User:</strong>
+      <%= food.user_id %>
+    </p>
+  </div>
 </div>

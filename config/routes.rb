@@ -1,15 +1,26 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: [:sessions]
+
+  as :user do
+    get 'sign_in', to: 'devise/sessions#new', as: :new_user_session
+    post 'sign_in', to: 'devise/sessions#create', as: :user_session
+    get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
+
+  authenticated :user do
+    root 'recipes#index', as: :authenticated_root
+  end
+
+  devise_scope :user do
+    unauthenticated :user do
+      root to: "devise/sessions#new", as: :unauthenticated_root
+    end
+  end
+
   resources :recipes
   resources :recipe_foods
   resources :foods
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :users, constraints: { id: /(?!sign_out).*/ }
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root to: "home#index"
 end

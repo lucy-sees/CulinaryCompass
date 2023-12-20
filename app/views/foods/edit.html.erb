@@ -1,10 +1,8 @@
-<h1>Editing food</h1>
+  <h1 class="my-4">Editing food</h1>
 
-<%= render "form", food: @food %>
+  <%= render "form", food: @food %>
 
-<br>
-
-<div>
-  <%= link_to "Show this food", @food %> |
-  <%= link_to "Back to foods", foods_path %>
-</div>
+  <div class="mt-4">
+    <%= link_to "Show this food", @food, class: 'btn btn-info mr-2' %> |
+    <%= link_to "Back to foods", foods_path, class: 'btn btn-secondary' %>
+  </div>

@@ -6,16 +6,16 @@ default: &default
 development:
   <<: *default
   database: culinary_compass_development
-  username: <%= ENV["CULINARY_COMPASS_DATABASE_USERNAME"] %>
-  password: <%= ENV["CULINARY_COMPASS_DATABASE_PASSWORD"] %>
+  username: postgres
+  password: vic
   host: localhost
   port: 5432
 
 test:
   <<: *default
   database: culinary_compass_test
-  username: <%= ENV["CULINARY_COMPASS_DATABASE_USERNAME"] %>
-  password: <%= ENV["CULINARY_COMPASS_DATABASE_PASSWORD"] %>
+  username: postgres
+  password: vic
   host: localhost
   port: 5432
   
