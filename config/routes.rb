@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   resources :users, constraints: { id: /(?!sign_out).*/ }
 
   get "up" => "rails/health#show", as: :rails_health_check
+
+  root "foods#index"
+  get '/public_recipe', to: 'recipes#public'
 end
