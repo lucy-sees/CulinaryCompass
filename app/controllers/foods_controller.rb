@@ -69,8 +69,8 @@ class FoodsController < ApplicationController
   end
 
   def check_owner
-    unless @food.user == current_user
-      redirect_to foods_path, alert: 'You can only edit or delete your own foods.'
-    end
+    return if @food.user == current_user
+
+    redirect_to foods_path, alert: 'You can only edit or delete your own foods.'
   end
 end
