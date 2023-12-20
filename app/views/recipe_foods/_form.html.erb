@@ -1,4 +1,4 @@
-<%= form_with(model: recipe_food, html: { class: 'form' }) do |form| %>
+<%= form_with(model: recipe_food, html: { class: 'form d-flex flex-column gap-3' }) do |form| %>
   <% if recipe_food.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" data-turbo-cache="false">
       <h4>
@@ -13,21 +13,18 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, class: 'form-control' %>
+    <%= form.number_field :quantity, class: 'form-control', placeholder: 'Quantity' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :food_id %>
-    <%= form.text_field :food_id, class: 'form-control' %>
+    <%= form.collection_select :food_id, Food.all, :id, :name, {prompt: 'Select Food'}, {class: 'form-control'} %>
   </div>
 
   <div class="form-group">
-    <%= form.label :recipe_id %>
-    <%= form.text_field :recipe_id, class: 'form-control' %>
+    <%= form.collection_select :recipe_id, Recipe.all, :id, :name, {prompt: 'Select Recipe'}, {class: 'form-control'} %>
   </div>
 
   <div class="form-group">
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit class: 'btn btn-primary mt-3' %>
   </div>
 <% end %>
