@@ -3,9 +3,6 @@
   <div id="recipe_foods">
     <% @recipe_foods.each do |recipe_food| %>
       <%= render recipe_food %>
-      <p>
-        <%= link_to "Show this recipe food", recipe_food, class: 'btn btn-info mb-2' %>
-      </p>
     <% end %>
   </div>
 
