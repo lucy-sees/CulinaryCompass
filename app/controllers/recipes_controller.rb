@@ -6,8 +6,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-   
-  #GET /public_recipe
+  # GET /public_recipe
   def public
     @recipes = Recipe.where(public: true).order(created_at: :desc)
   end
