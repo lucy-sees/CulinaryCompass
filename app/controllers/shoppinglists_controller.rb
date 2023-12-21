@@ -3,7 +3,8 @@ class ShoppinglistsController < ApplicationController
 
   def index
     @user = current_user
-    @food = @user.foods.left_outer_joins(:recipe_foods).where(recipe_foods: { id: nil }).includes(:recipe_foods)
+    @food = @user.foods.left_outer_joins(:recipe_foods).where(recipe_foods: { id: nil }).includes(:recipe_foods,
+                                                                                                  :categories)
     @food_counts = @food.count
     @food_prices = @food.sum(:price)
   end
@@ -11,6 +12,6 @@ class ShoppinglistsController < ApplicationController
   private
 
   def find_user
-    @user = current_user
+    @find_user ||= current_user
   end
 end
