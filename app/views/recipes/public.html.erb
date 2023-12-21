@@ -1,14 +1,11 @@
-<aside class="flex-recipe">
-  <h1>Public Recipes</h1>
+<aside class="col-md-6 mx-auto">
+  <h1 class="text-center mb-4">Public Recipes</h1>
   <% @recipes.each do |recipe| %>
-    <div class="recipe-item">
-      <div>
-        <p><%= recipe.name %></p>
-        <p>By: <%= recipe.user.name %></p>
-      </div>
-      <div>
-        <p>Total food items: <%= @recipes.length %></p>
-        <p>Total price: <%= recipe.name %></p>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= recipe.name %></h5>
+        <p class="card-text">By: <%= recipe.user.name %></p>
+        <p class="mb-0">Description: <%= recipe.description %></p>
       </div>
     </div>
   <% end %>
