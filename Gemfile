@@ -73,8 +73,8 @@ gem 'devise'
 gem 'dotenv-rails', '~> 2.8.1'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'database_cleaner' # if needed
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'database_cleaner' # if needed
+  gem 'rspec-rails'
 end
