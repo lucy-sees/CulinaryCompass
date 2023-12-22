@@ -74,7 +74,7 @@ This app will guide users through the world of cooking, just like a compass guid
 Clone this repository to your desired folder:
 
 ```
-git clone git@github.com:jkanyi-web/Blog-App.git
+git clone git@github.com:lucy-sees/CulinaryCompass.git
 ```
 
 ### Prerequisites
