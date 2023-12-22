@@ -54,9 +54,9 @@ RSpec.describe RecipeFoodsController, type: :controller do
         end.to change(RecipeFood, :count).by(0)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
+      it "renders a unsuccessful response (i.e. to display the 'new' template)" do
         post :create, params: { recipe_food: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -84,9 +84,9 @@ RSpec.describe RecipeFoodsController, type: :controller do
         expect(recipe_food.quantity).not_to eq(invalid_attributes[:quantity])
       end
 
-      it "renders a successful response (i.e. to display the 'edit' template)" do
+      it "renders an unsuccessful response (i.e. to display the 'edit' template)" do
         put :update, params: { id: recipe_food.id, recipe_food: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
