@@ -1,0 +1,14 @@
+<tr>
+  <td><%= food.name %></td>
+  <td><%= food.measurement_unit %></td>
+  <td><%= food.price %></td>
+  <td><%= food.quantity %></td>
+  <td><%= food.user.name %></td>
+  <td>
+    <div class="d-flex gap-1">
+      <%= link_to 'Show', food, class: 'btn btn-primary btn-sm' %>
+      <%= link_to 'Edit', edit_food_path(food), class: 'btn btn-primary btn-sm' %>
+      <%= button_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', form: { class: 'd-inline' } %>
+    </div>
+  </td>
+</tr>

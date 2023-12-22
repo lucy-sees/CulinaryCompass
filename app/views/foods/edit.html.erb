@@ -1,0 +1,8 @@
+  <h1 class="my-4">Edit Food</h1>
+
+  <%= render "form", food: @food %>
+
+  <div class="mt-4">
+    <%= link_to "Show this food", @food, class: 'btn btn-info mr-2' %> |
+    <%= link_to "Back to foods", foods_path, class: 'btn btn-secondary' %>
+  </div>

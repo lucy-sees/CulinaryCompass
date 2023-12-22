@@ -1,0 +1,16 @@
+<aside class="col-md-6 mx-auto mt-3">
+  <% @recipes.each do |recipe| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to recipe.name, recipe_path(recipe), class: "text-decoration-none text-dark" %>
+        </h5>
+        <p class="card-text">By: <%= recipe.user.name %></p>
+        <p class="mb-0">Description: <%= recipe.description %></p>
+        <% if recipe.user == current_user %>
+          <%= button_to 'Delete Recipe', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm mt-2' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</aside>

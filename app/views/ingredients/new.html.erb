@@ -1,0 +1,28 @@
+<h1>Add Ingredient</h1>
+
+<%= form_with(model: [@recipe, @ingredient], local: true, class: 'needs-validation', novalidate: true) do |form| %>
+  <div class="mb-3">
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Name', required: true %>
+    <div class="invalid-feedback">
+      Please provide a name.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.number_field :quantity, class: 'form-control', placeholder: 'Quantity', required: true %>
+    <div class="invalid-feedback">
+      Please provide a quantity.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.number_field :value, class: 'form-control', placeholder: 'Value', required: true %>
+    <div class="invalid-feedback">
+      Please provide a value.
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

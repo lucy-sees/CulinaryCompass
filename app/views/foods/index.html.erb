@@ -1,0 +1,25 @@
+<div id="foods">
+  <% if @foods.empty? %>
+    <h3 class="mt-3">No foods available.</h3>
+  <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Measurement Unit</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>User</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |food| %>
+          <%= render 'food', food: food %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+
+<%= link_to "New Food", new_food_path, class: 'btn btn-primary' %>

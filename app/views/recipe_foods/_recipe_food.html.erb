@@ -1,0 +1,20 @@
+<div id="<%= dom_id recipe_food %>" class="card mb-3 mt-5">
+  <div class="card-body">
+    <p class="card-text">
+      <strong>Quantity:</strong>
+      <%= recipe_food.quantity %>
+    </p>
+
+    <p class="card-text">
+      <strong>Food:</strong>
+      <%= recipe_food.food.name %>
+    </p>
+
+    <p class="card-text">
+      <strong>Recipe:</strong>
+      <%= recipe_food.recipe.name %>
+    </p>
+
+    <%= link_to "Show this recipe food", recipe_food, class: 'btn btn-info mb-2' %>
+  </div>
+</div>

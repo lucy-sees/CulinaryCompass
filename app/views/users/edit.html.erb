@@ -1,0 +1,8 @@
+  <h1 class="my-4">Editing user</h1>
+
+  <%= render "form", user: @user %>
+
+  <div class="mt-4">
+    <%= link_to "Show this user", @user, class: 'btn btn-info mr-2' %> |
+    <%= link_to "Back to users", users_path, class: 'btn btn-secondary' %>
+  </div>

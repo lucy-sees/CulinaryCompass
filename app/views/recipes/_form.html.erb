@@ -1,0 +1,47 @@
+<%= form_with(model: recipe, html: { class: 'form d-flex flex-column gap-3 mt-3' }) do |form| %>
+  <% if recipe.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger" data-turbo-cache="false">
+      <h4>
+        <%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:
+      </h4>
+      <ul>
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Name' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :preparation_time, class: 'form-control', placeholder: 'Preparation Time (Minutes)' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :cooking_time, class: 'form-control', placeholder: 'Cooking Time (Minutes)' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_area :steps, class: 'form-control', placeholder: 'Preparation Process' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.check_box :public, class: 'form-check-input' %>
+    <label class="form-check-label" for="public">Public</label>
+  </div>
+
+  <div class="form-group">
+    <%= form.collection_select :user_id, User.all, :id, :name, {prompt: 'Select User'}, {class: 'form-control'} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary mt-3' %>
+  </div>
+<% end %>

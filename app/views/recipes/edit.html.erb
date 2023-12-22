@@ -1,0 +1,7 @@
+  <%= render "form", recipe: @recipe %>
+
+  <div class="mt-4 d-flex align-items-center gap-2">
+    <%= link_to "Show", @recipe, class: 'btn btn-info mr-2' %>
+    <%= link_to "Back", recipes_path, class: 'btn btn-secondary mr-2' %>
+    <%= button_to "Delete", @recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>

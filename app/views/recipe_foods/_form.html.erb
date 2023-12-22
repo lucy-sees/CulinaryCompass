@@ -1,0 +1,30 @@
+<%= form_with(model: recipe_food, html: { class: 'form d-flex flex-column gap-3' }) do |form| %>
+  <% if recipe_food.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger" data-turbo-cache="false">
+      <h4>
+        <%= pluralize(recipe_food.errors.count, "error") %> prohibited this recipe_food from being saved:
+      </h4>
+      <ul>
+        <% recipe_food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.number_field :quantity, class: 'form-control', placeholder: 'Quantity' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.collection_select :food_id, Food.all, :id, :name, {prompt: 'Select Food'}, {class: 'form-control'} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.collection_select :recipe_id, Recipe.all, :id, :name, {prompt: 'Select Recipe'}, {class: 'form-control'} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary mt-3' %>
+  </div>
+<% end %>

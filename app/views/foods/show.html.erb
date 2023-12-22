@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Measurement Unit</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>User</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @food.name %></td>
+      <td><%= @food.measurement_unit %></td>
+      <td><%= @food.price %></td>
+      <td><%= @food.quantity %></td>
+      <td><%= @food.user.present? && @food.user.name.present? ? @food.user.name : 'N/A' %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mt-5">
+  <%= link_to "Edit this food", edit_food_path(@food), class: 'btn btn-primary' %> <br>
+  <%= link_to "Back to foods", foods_path, class: 'btn btn-secondary mt-2' %> <br>
+
+  <%= button_to "Delete this food", @food, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mt-2' %>
+</div>
