@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'sign_in', to: 'devise/sessions#new', as: :new_user_session
     post 'sign_in', to: 'devise/sessions#create', as: :user_session
     get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+    get '/login', to: 'sessions#new', as: :login
   end
 
   authenticated :user do
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :shoppinglists
   resources :recipes
   resources :recipe_foods
   resources :foods
