@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 
   resources :shoppinglists
   resources :recipes do
-    put :toggle_public, on: :member
+    resources :ingredients, only: [:new, :create, :edit, :update, :show, :destroy]
+    get 'general_shopping_list', on: :collection
   end
   resources :recipe_foods
   resources :foods
@@ -30,6 +31,4 @@ Rails.application.routes.draw do
 
   root "foods#index"
   get '/public_recipe', to: 'recipes#public'
-  get '/general_shopping_list', to: 'shoppinglists#index'
-
 end

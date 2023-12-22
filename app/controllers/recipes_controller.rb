@@ -80,11 +80,19 @@ class RecipesController < ApplicationController
     end
   end
 
+  def general_shopping_list
+    @shopping_list = current_user.recipes.map(&:ingredients).flatten
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
-    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
+    @recipe = Recipe.includes(:recipe_foods).find_by(id: params[:id])
+
+    return if @recipe
+
+    redirect_to recipes_path
   end
 
   # Only allow a list of trusted parameters through.

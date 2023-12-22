@@ -1,10 +1,33 @@
   <div id="recipes">
     <% @recipes.each do |recipe| %>
-      <%= render recipe %>
-      <p>
-        <%= link_to "Show this recipe", recipe, class: 'btn btn-info mb-2' %>
-      </p>
+      <div id="recipes">
+        <% @recipes.each do |recipe| %>
+          <div id="<%= dom_id recipe %>" class="card mb-3 mt-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <h5 class="card-title">
+                    <%= link_to recipe.name, recipe, class: 'text-dark text-decoration-none' %>
+                  </h5>
+                </div>
+                <div class="col-md-8">
+                <p class="card-text">
+                  <%= recipe.description %>
+                </p>
+              </div>
+            </div>
+            <% if recipe.user == current_user %>
+              <div class="row">
+                <div class="col-md-12">
+                <%= button_to 'Remove', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
     <% end %>
+  </div>                                        
+<% end %>
   </div>
 
   <%= link_to "New recipe", new_recipe_path, class: 'btn btn-primary mt-3' %>
