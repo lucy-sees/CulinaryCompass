@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.includes(:recipe_foods).all
+    @recipes = current_user.recipes.includes(:recipe_foods)
   end
 
   # GET /public_recipe
@@ -51,11 +51,32 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe.destroy!
+    if @recipe.user == current_user
+      @recipe.destroy!
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path, notice: 'Recipe was successfully deleted.') }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path, notice: 'You are not authorized to delete this recipe.') }
+        format.json { render json: { error: 'Not Authorized' }, status: 403 }
+      end
+    end
+  end
 
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    if @recipe.user == current_user
+      if @recipe.update(recipe_params)
+        Rails.logger.debug @recipe.inspect
+        redirect_to @recipe, notice: 'Recipe visibility was successfully updated.'
+      else
+        Rails.logger.debug @recipe.errors.full_messages
+        redirect_to @recipe, alert: 'There was an error updating the recipe.'
+      end
+    else
+      redirect_to @recipe, alert: 'You are not authorized to change this recipe.'
     end
   end
 

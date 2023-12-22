@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   end
 
   resources :shoppinglists
-  resources :recipes
+  resources :recipes do
+    put :toggle_public, on: :member
+  end
   resources :recipe_foods
   resources :foods
   resources :users, constraints: { id: /(?!sign_out).*/ }
